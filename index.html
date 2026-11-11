@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -47,6 +48,7 @@ header p {
 /* GLAS CONTAINER */
 main {
   flex: 1;
+  width: calc(100% - 2rem);
   max-width: 1000px;
   margin: 2rem auto;
   padding: 2.5rem;
@@ -63,13 +65,19 @@ main {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 }
 
@@ -85,6 +93,39 @@ main {
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* FEATURED PROJECT: 2 SPALTEN */
+.project-card.featured {
+  grid-column: 1 / -1;
+  border-left: 5px solid #c084fc;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 20, 55, 0.85),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+.project-card.featured .project-header {
+  font-size: 1.7rem;
+}
+
+.project-card.featured .button-primary {
+  background: #9333ea;
+}
+
+.project-card.featured .button-primary:hover {
+  background: #7e22ce;
+}
+
+.project-card.featured .button-secondary {
+  border-color: #c084fc;
+  color: #c084fc;
+}
+
+.project-card.featured .button-secondary:hover {
+  background: #9333ea;
+  color: white;
 }
 
 .project-header {
@@ -107,6 +148,7 @@ main {
 }
 
 .button {
+  display: inline-block;
   padding: 0.6rem 1rem;
   border-radius: 8px;
   text-decoration: none;
@@ -143,6 +185,35 @@ footer {
   font-size: 0.9rem;
   color: rgba(255,255,255,0.7);
 }
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 700px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 1.2rem;
+    margin: 1rem auto;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    padding: 1.4rem;
+  }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .project-card.featured .project-header {
+    font-size: 1.5rem;
+  }
+}
 </style>
 </head>
 
@@ -156,18 +227,59 @@ footer {
 <main>
   <div class="projects-grid">
 
-    <!-- Chess -->
-    <div class="project-card">
-      <div class="project-header">♟️ Schachspiel im Browser</div>
-      <div class="project-description">
-        Vollwertiges Schachspiel mit Drag & Drop, Rochade, En Passant,
-        Umwandlung, Schach, Matt und Patt – direkt im Browser spielbar.
+    <!-- Abstrakte Kunst Generator -->
+    <div class="project-card featured">
+      <div class="project-header">
+        🎨 Abstrakte Kunst Generator
       </div>
+
+      <div class="project-description">
+        Erstelle einzigartige abstrakte Kunstwerke direkt
+        im Browser. Experimentiere mit kreativen Formen,
+        Farben und zufällig generierten Designs.
+      </div>
+
       <div class="project-links">
-        <a class="button button-primary" href="https://tuxspace.github.io/chess/" target="_blank">
+        <a class="button button-primary"
+           href="https://tuxspace.github.io/abstract-art-generator/"
+           target="_blank"
+           rel="noopener noreferrer">
           Projekt öffnen
         </a>
-        <a class="button button-secondary" href="https://github.com/tuxspace/chess" target="_blank">
+
+        <a class="button button-secondary"
+           href="https://github.com/tuxspace/abstract-art-generator"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- Chess -->
+    <div class="project-card">
+      <div class="project-header">
+        ♟️ Schachspiel im Browser
+      </div>
+
+      <div class="project-description">
+        Vollwertiges Schachspiel mit Drag & Drop,
+        Rochade, En Passant, Umwandlung, Schach,
+        Matt und Patt – direkt im Browser spielbar.
+      </div>
+
+      <div class="project-links">
+        <a class="button button-primary"
+           href="https://tuxspace.github.io/chess/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Projekt öffnen
+        </a>
+
+        <a class="button button-secondary"
+           href="https://github.com/tuxspace/chess"
+           target="_blank"
+           rel="noopener noreferrer">
           GitHub
         </a>
       </div>
@@ -175,17 +287,28 @@ footer {
 
     <!-- FindYourDistro -->
     <div class="project-card">
-      <div class="project-header">🐧 FindYourDistro</div>
+      <div class="project-header">
+        🐧 FindYourDistro
+      </div>
+
       <div class="project-description">
         Interaktives Linux-Distro-Quiz mit 50 Distributionen.
-        Trait-basiertes Matching-System für Desktop, Gaming, Server,
-        Security und Immutable-Modelle.
+        Trait-basiertes Matching-System für Desktop,
+        Gaming, Server, Security und Immutable-Modelle.
       </div>
+
       <div class="project-links">
-        <a class="button button-primary" href="https://tuxspace.github.io/findyourdistro/" target="_blank">
+        <a class="button button-primary"
+           href="https://tuxspace.github.io/findyourdistro/"
+           target="_blank"
+           rel="noopener noreferrer">
           Projekt öffnen
         </a>
-        <a class="button button-secondary" href="https://github.com/tuxspace/findyourdistro" target="_blank">
+
+        <a class="button button-secondary"
+           href="https://github.com/tuxspace/findyourdistro"
+           target="_blank"
+           rel="noopener noreferrer">
           GitHub
         </a>
       </div>
@@ -193,16 +316,29 @@ footer {
 
     <!-- Minigolf Tracker -->
     <div class="project-card">
-      <div class="project-header">⛳ Minigolf Tracker</div>
-      <div class="project-description">
-        Web-App zum Erfassen und Verfolgen von Minigolf-Ergebnissen.
-        Ideal zum Tracken von Spielern, Runden und Punkteständen direkt im Browser.
+      <div class="project-header">
+        ⛳ Minigolf Tracker
       </div>
+
+      <div class="project-description">
+        Web-App zum Erfassen und Verfolgen von
+        Minigolf-Ergebnissen. Ideal zum Tracken
+        von Spielern, Runden und Punkteständen
+        direkt im Browser.
+      </div>
+
       <div class="project-links">
-        <a class="button button-primary" href="https://tuxspace.github.io/minigolf_tracker/" target="_blank">
+        <a class="button button-primary"
+           href="https://tuxspace.github.io/minigolf_tracker/"
+           target="_blank"
+           rel="noopener noreferrer">
           Projekt öffnen
         </a>
-        <a class="button button-secondary" href="https://github.com/tuxspace/minigolf_tracker" target="_blank">
+
+        <a class="button button-secondary"
+           href="https://github.com/tuxspace/minigolf_tracker"
+           target="_blank"
+           rel="noopener noreferrer">
           GitHub
         </a>
       </div>
